@@ -1,7 +1,9 @@
 $red: red;
 
+@import './abstract/_abstract';
+
 @import '~bulma/bulma';
 
-body {
-    color: $red !important;
-}
+@import './components/_components';
+@import './layout/_layout';
+@import './shame/_shame';

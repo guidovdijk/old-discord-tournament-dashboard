@@ -1,0 +1,13 @@
+.button, button {
+    &.is-link {
+        &.is-rounded {
+            &.is-outlined {
+                &:hover, &.is-active {
+                    color: $link-hover;
+                    background-color: transparent;
+                    border-color: $link-hover;
+                }
+            }  
+        } 
+    } 
+}

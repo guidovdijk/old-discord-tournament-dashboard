@@ -1,0 +1,105 @@
+$match-spacing: 10px;
+$bracket-node-spacing: 10px;
+
+.tournament-wrapper {
+    display: flex;
+    overflow-x: auto;
+}
+
+.tournament-item {
+    display: flex;
+    flex-direction: row-reverse;
+    p {
+        padding: 20px;
+        margin: 0;
+    }
+    &-parent {
+        position: relative;
+        margin-left: 50px;
+        display: flex;
+        align-items: center;
+        &:after {
+            position: absolute;
+            content: "";
+            width: 25px;
+            height: 2px;
+            left: 0;
+            top: 50%;
+            background-color: $grey-dark;
+            transform: translateX(-100%);
+        }
+    }
+    &-players {
+        flex-direction: column;
+        margin: 0;
+        width: $tournament-item-width;
+        .winner {
+            background-color: $grey-light;
+        }
+        .highlight {
+            background-color: darkseagreen;
+        }
+    }
+    &-players .tournament-player {
+        background-color: $grey-dark;
+        min-height: 45px;
+        height: 100%;
+        padding: 10px;
+        position: relative;
+        &:after {
+            content: "";
+            position: absolute;
+            right: 0;
+            background-color: transparent;
+            height: 15px;
+            width: 15px;
+            transform: translateY(-50%);
+            top: 50%;
+            bottom: 0;
+            right: 10px;
+            border-radius: 100%;
+            border: 1px solid $text;
+        }
+    }
+    .tournament-player1 {
+        margin-bottom: $match-spacing;
+    }
+
+    &-children {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    &-child {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-end;
+        margin-top: $bracket-node-spacing;
+        margin-bottom: $bracket-node-spacing;
+        position: relative;
+        &:before, &:after {
+            content: "";
+            position: absolute;
+            background-color: $grey-dark;
+        }
+        &:before {
+            right: 0;
+            top: 50%;
+            transform: translateX(100%);
+            width: 25px;
+            height: 2px;
+        }
+        &:after {
+            right: -25px;
+            height: calc(50% + 22px);
+            width: 2px;
+            top: 50%;
+        }
+        &:last-child:after {
+            transform: translateY(-100%);
+        }
+        &:only-child:after {
+            display: none;
+        }
+    }
+}

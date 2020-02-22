@@ -5,11 +5,21 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    activity: 'Teams'
   },
   mutations: {
+    changeActivity (state, payload) {
+      state.activity = payload.activity;
+    }
   },
   actions: {
+    changeActivity (context, payload) {
+        context.commit("changeActivity", payload);
+    }
   },
-  modules: {
+  getters: {
+    getActivity: state => {
+      return state.activity
+    }
   }
 })

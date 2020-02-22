@@ -1,0 +1,18 @@
+body {
+  padding-top: $navbar-height;
+}
+
+.columns {
+    &.is-fullheight {
+      flex: 1;
+  
+      .column-has-scroll {
+        overflow-y: auto;
+      }
+
+      .column-has-max-height {
+        max-height: calc(100% + -90px);
+        height: 100%;
+      }
+    }
+  }

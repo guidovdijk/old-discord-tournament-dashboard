@@ -1,0 +1,23 @@
+.menu-wrapper {
+    height: calc(100vh - 5.5rem);
+    position: relative;
+}
+aside.menu {
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    padding: 1.25rem;
+    padding-left: 2rem;
+
+    .menu-list {
+        &:first-of-type {
+            margin-top: 20px;
+            a {
+                margin-bottom: 1.5rem;
+            }
+        }
+        a {
+            display: inline-block;
+        }
+    }
+}

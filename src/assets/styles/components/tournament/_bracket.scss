@@ -29,25 +29,18 @@ $bracket-node-spacing: 10px;
             transform: translateX(-100%);
         }
     }
-    &-players {
-        flex-direction: column;
-        margin: 0;
-        width: $tournament-item-width;
-        .winner {
-            background-color: $grey-light;
-        }
-        .highlight {
-            background-color: darkseagreen;
-        }
-    }
     &-players .tournament-player {
         background-color: $grey-dark;
         min-height: 45px;
         height: 100%;
         padding: 10px;
         position: relative;
+        &:hover {
+            &:after {
+                content: "";
+            }
+        }
         &:after {
-            content: "";
             position: absolute;
             right: 0;
             background-color: transparent;
@@ -59,6 +52,21 @@ $bracket-node-spacing: 10px;
             right: 10px;
             border-radius: 100%;
             border: 1px solid $text;
+        }
+    }
+    &-players {
+        flex-direction: column;
+        margin: 0;
+        width: $tournament-item-width;
+        .winner {
+            background-color: $grey-light;
+            &:after {
+                background-color: $primary;
+                content: "";
+            }
+        }
+        .highlight {
+            background-color: darkseagreen;
         }
     }
     .tournament-player1 {

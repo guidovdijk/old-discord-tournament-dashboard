@@ -2,15 +2,9 @@
     <div class="tournament-wrapper" v-if="recursiveBracket">
         <bracket-node
             :bracket-node="recursiveBracket"
-            @onSelectedPlayer="highlightPlayer"
-            @onDeselectedPlayer="unhighlightPlayer"
-            :highlighted-player-id="highlightedPlayerId"
         >
             <template #player="{ player }">
-                <slot name="player" :player="player" />
-            </template>
-            <template #player-extension-bottom="{ match }">
-                <slot name="player-extension-bottom" :match="match" />
+                <slot name="player" :player="player"/>
             </template>
         </bracket-node>
     </div>
@@ -27,7 +21,7 @@
         props: ["rounds"],
         data() {
             return {
-                highlightedPlayerId: null
+
             };
         },
         computed: {
@@ -36,12 +30,6 @@
             }
         },
         methods: {
-            highlightPlayer(id) {
-                this.highlightedPlayerId = id;
-            },
-            unhighlightPlayer() {
-                this.highlightedPlayerId = null;
-            }
         }
     };
 </script>

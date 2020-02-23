@@ -1,17 +1,12 @@
 <template>
-    <div class="tournament-item">
+    <div class="tournament-item" :nextNode="nextNode">
         <div :class="getBracketNodeClass(bracketNode)">
             <game-players
                 :bracket-node="bracketNode"
-                :highlighted-player-id="highlightedPlayerId"
-                @onSelectedPlayer="highlightPlayer"
-                @onDeselectedPlayer="unhighlightPlayer"
+                :nextNode="nextNode"
             >
                 <template #player="{ player }">
                     <slot name="player" :player="player" />
-                </template>
-                <template #player-extension-bottom="{ match }">
-                    <slot name="player-extension-bottom" :match="match" />
                 </template>
             </game-players>
         </div>
@@ -20,30 +15,19 @@
             <div class="tournament-item-child" v-if="bracketNode.games[0]">
                 <bracket-node
                     :bracket-node="bracketNode.games[0]"
-                    :highlighted-player-id="highlightedPlayerId"
-                    @onSelectedPlayer="highlightPlayer"
-                    @onDeselectedPlayer="unhighlightPlayer"
                 >
                     <template #player="{ player }">
-                        <slot name="player" :player="player" />
-                    </template>
-                    <template #player-extension-bottom="{ match }">
-                        <slot name="player-extension-bottom" :match="match" />
+                        <slot name="player" :player="player" :nextNode="0" />
                     </template>
                 </bracket-node>
             </div>
+
             <div class="tournament-item-child" v-if="bracketNode.games[1]">
                 <bracket-node
                     :bracket-node="bracketNode.games[1]"
-                    :highlighted-player-id="highlightedPlayerId"
-                    @onSelectedPlayer="highlightPlayer"
-                    @onDeselectedPlayer="unhighlightPlayer"
                 >
                     <template #player="{ player }">
-                        <slot name="player" :player="player" />
-                    </template>
-                    <template #player-extension-bottom="{ match }">
-                        <slot name="player-extension-bottom" :match="match" />
+                        <slot name="player" :player="player" :nextNode="0"/>
                     </template>
                 </bracket-node>
             </div>
@@ -56,7 +40,10 @@
     export default {
         name: "bracket-node",
         components: { GamePlayers },
-        props: ["bracketNode", "highlightedPlayerId"],
+        props: ["bracketNode", "nextNode"],
+        created() {
+            console.log(this.bracketNode)
+        },
         methods: {
             getBracketNodeClass(bracketNode) {
                 if (bracketNode.games[0] || bracketNode.games[1]) {
@@ -77,12 +64,6 @@
                 }
                 return clazz;
             },
-            highlightPlayer(playerId) {
-                this.$emit("onSelectedPlayer", playerId);
-            },
-            unhighlightPlayer() {
-                this.$emit("onDeselectedPlayer");
-            }
         }
     };
 </script>

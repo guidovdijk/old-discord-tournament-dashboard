@@ -13,7 +13,7 @@ module.exports = {
             currentRound = rounds[i].games.map(game => {
                 return {
                     ...game,
-                    title: "round " + i,
+                    round: i + 1,
                     games: [],
                     hasParent: !!rounds[i + 1]
                 };

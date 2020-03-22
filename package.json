@@ -7,7 +7,7 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "bulma": "^0.8.0",
+    "buefy": "^0.8.13",
     "core-js": "^3.6.4",
     "firebase": "^7.9.0",
     "vue": "^2.6.11",

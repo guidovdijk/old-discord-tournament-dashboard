@@ -1,10 +1,12 @@
 $red: red;
+@import "~bulma/sass/utilities/_all";
 
 @import './abstract/_abstract';
-
-@import '~bulma/bulma';
 
 @import './elements/_elements';
 @import './components/_components';
 @import './layout/_layout';
 @import './shame/_shame';
+
+@import "~bulma";
+@import "~buefy/src/scss/buefy";

@@ -1,22 +1,18 @@
 <template>
-  <div class="is-viewport-height is-flex has-direction-column">
+  <div>
     <NavigationBar msg="Welcome to Your Vue.js App"/>
-      <div class="columns is-variable is-8">
-        <div class="column is-narrow has-background-dark column-has-scroll">
-          <NavigationSidebar />
-        </div>
-        <div class="column column-has-scroll">
-          <div class="columns is-fullheight ">
-            <div class="column column-has-max-height is-10-desktop is-12-tablet">
-              <NavigationBarSecondary />
-              <Activities />
-              
+      <NavigationSidebar />
+      <div class="container is-fluid">
+        <div class="columns has-sidebar-neighbour">
+          <div class="column">
+            <div class="columns">
+              <div class="column is-10-desktop is-12-tablet">
+                <NavigationBarSecondary />
+                <Activities />
+                
+              </div>
             </div>
           </div>
-        </div>
-        <div class="column is-2 has-background-dark">
-              <NavigationSidebar />
-
         </div>
       </div>
   </div>

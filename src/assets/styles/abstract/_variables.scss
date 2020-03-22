@@ -1,15 +1,27 @@
-$primary: #3ab89c;
-$is-black: #1e2233;
+
+$black: #1e2233;
 $dark: #2D3144;
+$primary: #3ab89c;
 $grey-dark: #2e3144;
 $grey-light: #3b3c52;
+
+$colors: (
+    "black": ($black, $black),
+    "dark": ($dark, $dark),
+    "primary": ($primary, $primary),
+    "grey-dark": ($grey-dark, $grey-dark),
+    "grey-light": ($grey-light, $grey-light),
+);
+
+$table-head-background-color: map-get($colors, 'black');
+@debug $table-head-background-color;
 $body-background-color: #282a3a;
 
 $text: #aaafcb;
 $link: $text;
 $link-hover: #d4d6dc;
 $text-strong: $link-hover;
-// $title-color: $text;
+$table-color: $text;
 $control-radius: 2px;
 
 $gap: 16px;
@@ -18,15 +30,15 @@ $menu-list-link-padding: 0;
 $menu-item-hover-color: $link-hover;
 $menu-item-hover-background-color: transparent;
 $menu-item-active-background-color: $menu-item-hover-background-color;
-
+$menu-list-line-height: 3rem;
+$menu-list-line-height-small: 2rem;
 $level-item-spacing: 3rem;
 
 $navbar-height:	5.5rem;
-$navbar-background-color: $is-black;
 
 $table-striped-row-even-background-color: $body-background-color;
 $table-background-color: $dark;
-$table-head-background-color: $is-black;
+$table-head-background-color: $black;
 $border: #696c7d;
 $table-cell-border: 1px solid $border;
 $table-head-cell-border-width: 0 0 1px;

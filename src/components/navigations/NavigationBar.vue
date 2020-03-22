@@ -1,30 +1,26 @@
 <template>
-<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="https://bulma.io">
-      <!-- <img src="../assets/images/logo.png" alt="" /> -->
-    </a>
+    <b-navbar :fixed-top="true" :type="'is-black'">
+        <template slot="brand">
+            <b-navbar-item tag="router-link" :to="{ path: '/' }">
 
-    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
+            </b-navbar-item>
+        </template>
 
-  <div class="navbar-menu">
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-          <a class="button is-primary">
-            <strong>Sign up</strong>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</nav>
+        <template slot="end">
+            <b-navbar-item tag="div">
+                <div class="buttons">
+                    <a class="button is-primary">
+                        Sign up
+                    </a>
+                    <a class="button is-light">
+                        Log in
+                    </a>
+                </div>
+            </b-navbar-item>
+        </template>
+    </b-navbar>
 </template>
+
 
 <script>
 export default {

@@ -1,0 +1,6 @@
+.b-checkbox.checkbox input[type=checkbox] {
+    &:focus + .check, 
+    &:focus:checked + .check {
+        box-shadow: none;
+    }
+}

@@ -5,7 +5,6 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    activity: 'Teams',
     tournament: {
       roundWinners: new Array(4),
       rounds: [
@@ -56,25 +55,16 @@ export default new Vuex.Store({
     },
   },
   mutations: {
-    changeActivity (state, payload) {
-      state.activity = payload.activity;
-    },
     changeTournamentRoundWinner(state, payload){
       state.tournament.rounds = payload.rounds;
     }
   },
   actions: {
-    changeActivity (context, payload) {
-        context.commit("changeActivity", payload);
-    },
     changeTournamentRoundWinner (context, payload) {
         context.commit("changeTournamentRoundWinner", payload);
     }
   },
   getters: {
-    getActivity: state => {
-      return state.activity
-    },
     getTournamentRounds: state => {
       return state.tournament.rounds
     },

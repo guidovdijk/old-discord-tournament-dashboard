@@ -3,10 +3,10 @@ $red: red;
 
 @import './abstract/_abstract';
 
+@import "~bulma";
+@import "~buefy/src/scss/buefy";
+
 @import './elements/_elements';
 @import './components/_components';
 @import './layout/_layout';
 @import './shame/_shame';
-
-@import "~bulma";
-@import "~buefy/src/scss/buefy";

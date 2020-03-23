@@ -8,19 +8,20 @@ $grey-light: #3b3c52;
 $colors: (
     "black": ($black, $black),
     "dark": ($dark, $dark),
-    "primary": ($primary, $primary),
-    "grey-dark": ($grey-dark, $grey-dark),
+    "primary": ($primary, white),
+    "grey-dark": ($grey-dark, white),
     "grey-light": ($grey-light, $grey-light),
 );
 
-$table-head-background-color: map-get($colors, 'black');
-@debug $table-head-background-color;
 $body-background-color: #282a3a;
 
 $text: #aaafcb;
 $link: $text;
 $link-hover: #d4d6dc;
 $text-strong: $link-hover;
+$input-hover-color: $link-hover;
+
+$title-color: $text;
 $table-color: $text;
 $control-radius: 2px;
 

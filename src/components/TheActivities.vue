@@ -42,8 +42,8 @@
                         component: 'Teams',
                     },
                     {
-                        name: 'Results',
-                        component: 'Results',
+                        name: 'Details',
+                        component: 'Details',
                     },
                 ]
             }

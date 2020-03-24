@@ -65,7 +65,7 @@
 
             <template slot="detail" slot-scope="props">
                 <tr v-for="item in props.row.items" :key="item.name" class="table--detail__child">
-                    <td></td>
+                    <td>{{item}}</td>
 
                     <td v-show="columnsVisible['name'].display" >{{ item.name }}</td>
                     <td v-show="columnsVisible['sold'].display">{{ item.sold }}</td>
@@ -82,7 +82,7 @@
                     </td>
                     <td align="right">
                         <div class="buttons is-right">
-                            <b-button @click="isComponentModalActive = true" size="is-small" label="" type="is-grey-light" icon-right="settings"></b-button>
+                            <b-button @click="updateModalData(item)" size="is-small" label="" type="is-grey-light" icon-right="settings"></b-button>
                             <b-button size="is-small" label="" outlined type="is-danger" icon-right="delete"></b-button>
                         </div>
                     </td>
@@ -93,7 +93,7 @@
         
         <b-modal :active.sync="isComponentModalActive"
             has-modal-card>
-            <ModalForm />
+            <ModalForm :modal="modal"/>
         </b-modal>
     </section>
 </template>
@@ -107,6 +107,9 @@ export default {
     },
     data() {
         return {
+            modal: {
+                title: String,
+            },
             isComponentModalActive: false,
             data: [
                 {
@@ -211,7 +214,10 @@ export default {
         }
     },
     methods: {
-
+        updateModalData(item){
+            this.isComponentModalActive = true;
+            this.modal.title = item.name;
+        }
     }
 }
 </script>

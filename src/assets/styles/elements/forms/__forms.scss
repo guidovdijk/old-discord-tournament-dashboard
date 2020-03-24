@@ -1,1 +1,8 @@
 @import 'checkbox';
+@import 'select';
+
+.field {
+    &:not(:last-child) {
+      margin-bottom: 1.2rem; 
+    }
+}

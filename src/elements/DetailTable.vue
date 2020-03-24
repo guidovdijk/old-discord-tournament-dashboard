@@ -30,34 +30,34 @@
                 </b-table-column>
 
                 <b-table-column
-                    field="sold"
-                    :visible="columnsVisible['sold'].display"
-                    :label="columnsVisible['sold'].title"
+                    field="wins"
+                    :visible="columnsVisible['wins'].display"
+                    :label="columnsVisible['wins'].title"
                     sortable
                 >
-                    {{ props.row.sold }}
+                    {{ props.row.wins }}
                 </b-table-column>
 
                 <b-table-column
-                    field="available"
-                    :visible="columnsVisible['available'].display"
-                    :label="columnsVisible['available'].title"
+                    field="losses"
+                    :visible="columnsVisible['losses'].display"
+                    :label="columnsVisible['losses'].title"
                     sortable
                 >
-                    {{ props.row.available }}
+                    {{ props.row.losses }}
                 </b-table-column>
 
                 <b-table-column
-                    :visible="columnsVisible['cleared'].display"
-                    :label="columnsVisible['cleared'].title"
+                    :visible="columnsVisible['percentage'].display"
+                    :label="columnsVisible['percentage'].title"
                 >
                     <span :class="
                             [
                                 'tag',
-                                {'is-danger': props.row.sold / props.row.available <= 0.45},
-                                {'is-success': props.row.sold / props.row.available > 0.45}
+                                {'is-danger': props.row.wins / props.row.losses <= 0.45},
+                                {'is-success': props.row.wins / props.row.losses > 0.45}
                             ]">
-                        {{ Math.round((props.row.sold / props.row.available) * 100) }}%
+                        {{ Math.round((props.row.wins / props.row.losses) * 100) }}%
                     </span>
                 </b-table-column>
                 <b-table-column  />
@@ -65,19 +65,19 @@
 
             <template slot="detail" slot-scope="props">
                 <tr v-for="item in props.row.items" :key="item.name" class="table--detail__child">
-                    <td>{{item}}</td>
+                    <td></td>
 
                     <td v-show="columnsVisible['name'].display" >{{ item.name }}</td>
-                    <td v-show="columnsVisible['sold'].display">{{ item.sold }}</td>
-                    <td v-show="columnsVisible['available'].display">{{ item.available }}</td>
-                    <td v-show="columnsVisible['cleared'].display">
+                    <td v-show="columnsVisible['wins'].display">{{ item.wins }}</td>
+                    <td v-show="columnsVisible['losses'].display">{{ item.losses }}</td>
+                    <td v-show="columnsVisible['percentage'].display">
                         <span :class="
                             [
                                 'tag',
-                                {'is-danger': item.sold / item.available <= 0.45},
-                                {'is-success': item.sold / item.available > 0.45}
+                                {'is-danger': item.wins / item.losses <= 0.45},
+                                {'is-success': item.wins / item.losses > 0.45}
                             ]">
-                            {{ Math.round((item.sold / item.available) * 100) }}%
+                            {{ Math.round((item.wins / item.losses) * 100) }}%
                         </span>
                     </td>
                     <td align="right">
@@ -93,7 +93,7 @@
         
         <b-modal :active.sync="isComponentModalActive"
             has-modal-card>
-            <ModalForm :modal="modal"/>
+            <ModalForm :modal="modal" :activeColumns="columnsPlayer"/>
         </b-modal>
     </section>
 </template>
@@ -109,114 +109,133 @@ export default {
         return {
             modal: {
                 title: String,
+                detail: 'Change player with another available player',
+                active: {
+                    player: Object
+                },
             },
             isComponentModalActive: false,
             data: [
                 {
                     name: 'Board Games',
-                    sold: 131,
-                    available: 301,
+                    wins: 131,
+                    losses: 301,
                     items: [
                         {
                             name: 'Monopoly',
-                            sold: 57,
-                            available: 100
+                            wins: 57,
+                            losses: 100
                         },
                         {
                             name: 'Scrabble',
-                            sold: 23,
-                            available: 84
+                            wins: 23,
+                            losses: 84
                         },
                         {
                             name: 'Chess',
-                            sold: 37,
-                            available: 61
+                            wins: 37,
+                            losses: 61
                         },
                         {
                             name: 'Battleships',
-                            sold: 14,
-                            available: 56
+                            wins: 14,
+                            losses: 56
                         }
                     ]
                 },
                 {
                     name: 'Jigsaws & Puzzles',
-                    sold: 88,
-                    available: 167,
+                    wins: 88,
+                    losses: 167,
                     items: [
                         {
                             name: 'World Map',
-                            sold: 31,
-                            available: 38
+                            wins: 31,
+                            losses: 38
                         },
                         {
                             name: 'London',
-                            sold: 23,
-                            available: 29
+                            wins: 23,
+                            losses: 29
                         },
                         {
                             name: 'Sharks',
-                            sold: 20,
-                            available: 44
+                            wins: 20,
+                            losses: 44
                         },
                         {
                             name: 'Disney',
-                            sold: 14,
-                            available: 56
+                            wins: 14,
+                            losses: 56
                         }
                     ]
                 },
                 {
                     name: 'Books',
-                    sold: 434,
-                    available: 721,
+                    wins: 434,
+                    losses: 721,
                     items: [
                         {
                             name: 'Hamlet',
-                            sold: 101,
-                            available: 187
+                            wins: 101,
+                            losses: 187
                         },
                         {
                             name: 'The Lord Of The Rings',
-                            sold: 85,
-                            available: 156
+                            wins: 85,
+                            losses: 156
                         },
                         {
                             name: 'To Kill a Mockingbird',
-                            sold: 78,
-                            available: 131
+                            wins: 78,
+                            losses: 131
                         },
                         {
                             name: 'Catch-22',
-                            sold: 73,
-                            available: 98
+                            wins: 73,
+                            losses: 98
                         },
                         {
                             name: 'Frankenstein',
-                            sold: 51,
-                            available: 81
+                            wins: 51,
+                            losses: 81
                         },
                         {
-                            name: 'Alice\'s Adventures In Wonderland',
-                            sold: 46,
-                            available: 68
+                            name: 'Alice\'s Adventures In winsderland',
+                            wins: 46,
+                            losses: 68
                         }
                     ]
                 }
             ],
             columnsVisible: {
                 name: { title: 'Team Name', display: true },
-                sold: { title: 'Rounds Won', display: true },
-                available: { title: 'Rounds Lost', display: true },
-                cleared: { title: 'Win Percentage', display: true },
+                wins: { title: 'Rounds Won', display: true },
+                losses: { title: 'Rounds Lost', display: true },
+                percentage: { title: 'Win Percentage', display: true },
             },
+            columnsPlayer: [
+                {
+                    field: 'name',
+                    label: 'Player Name',
+                },
+                {
+                    field: 'wins',
+                    label: 'Total Wins',
+                },
+                {
+                    field: 'losses',
+                    label: 'Total Losses',
+                },
+            ],
             showDetailIcon: true
         }
     },
     methods: {
         updateModalData(item){
             this.isComponentModalActive = true;
-            this.modal.title = item.name;
+            this.modal.title = 'Selected player: ' + item.name;
+            this.modal.active.player = item;
         }
     }
 }

@@ -1,6 +1,6 @@
 .modal-card-foot {
     background-color: $grey-light;
-    &.is-right {
-        justify-content: flex-end;
+    &.is-even {
+        justify-content: space-between;
     }
 }

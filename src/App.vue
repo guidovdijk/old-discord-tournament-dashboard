@@ -1,9 +1,17 @@
 <template>
-
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div> -->
-    <router-view/>
-
+    <div>
+      <NavigationBar msg="Welcome to Your Vue.js App"/>
+      <NavigationSidebar />
+      <router-view/>
+    </div>
 </template>
+<script>
+import TheNavigation from '@/components/navigations/TheNavigation.vue'
+import TheSidebar from '@/components/navigations/TheSidebar.vue'
+export default {
+  components: {
+    'NavigationBar': TheNavigation,
+    'NavigationSidebar': TheSidebar,
+  }
+}
+</script>

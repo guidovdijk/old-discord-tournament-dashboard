@@ -1,4 +1,4 @@
-
+$red: #c11212;
 $black: #1e2233;
 $dark: #2D3144;
 $primary: #3ab89c;
@@ -10,7 +10,8 @@ $colors: (
     "dark": ($dark, $dark),
     "primary": ($primary, white),
     "grey-dark": ($grey-dark, white),
-    "grey-light": ($grey-light, $grey-light),
+    "grey-light": ($grey-light, #d4d6dc),
+    "danger": ($red, $danger-invert)
 );
 
 $body-background-color: #282a3a;
@@ -19,10 +20,16 @@ $text: #aaafcb;
 $link: $text;
 $link-hover: #d4d6dc;
 $text-strong: $link-hover;
+
 $input-hover-color: $link-hover;
+$input-background-color: $grey-light;
+$input-border-color: $text;
+$input-hover-border-color: $text;
 
 $title-color: $text;
 $table-color: $text;
+$label-color: $text;
+$label-weight: $weight-medium;
 $control-radius: 2px;
 
 $gap: 16px;
@@ -43,5 +50,11 @@ $table-head-background-color: $black;
 $border: #696c7d;
 $table-cell-border: 1px solid $border;
 $table-head-cell-border-width: 0 0 1px;
+
+$modal-card-head-background-color: $dark;
+$modal-card-body-background-color: $grey-light;
+$modal-card-foot-border-top: transparent;
+
+
 
 $tournament-item-width: 200px;

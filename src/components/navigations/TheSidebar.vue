@@ -3,8 +3,7 @@
     <b-menu>
         <b-menu-list>
             <b-menu-item label="Dashboard"></b-menu-item>
-            <b-menu-item
-                :active="isActive">
+            <b-menu-item>
                 <template slot="label" slot-scope="props">
                     Teams
                 </template>
@@ -20,8 +19,8 @@
                 </b-menu-item>
                 <b-menu-item label="Payments" disabled></b-menu-item>
             </b-menu-item>
-            <b-menu-item label="Tournament">
-                <b-menu-item label="Account data"></b-menu-item>
+            <b-menu-item label="Tournament" :active="isActive">
+                <b-menu-item tag="router-link" :to="{ path: '/' }" label="Overview"></b-menu-item>
                 <b-menu-item label="Addresses"></b-menu-item>
             </b-menu-item>
         </b-menu-list>
@@ -29,8 +28,7 @@
             <b-menu-item
                 label="My Profile"
                 tag="router-link"
-                target="_blank"
-                to="/expo">
+                to="/about">
             </b-menu-item>
         </b-menu-list>
         <div class="menu-end">

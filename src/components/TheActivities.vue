@@ -3,7 +3,7 @@
 
         <div class="activities__add-ons">
             <p class="title is-5 is-marginless">
-                <strong>123</strong> posts
+                <strong>Tournament</strong> title
             </p>
 
             <b-button icon-left="settings" type="is-link" rounded outlined>Edit tournament</b-button>
@@ -11,8 +11,8 @@
 
         <b-tabs position="is-centered" v-model="activeTab">
             <template v-for="(item, index) in navItems">
-                <b-tab-item :key="index" :label="item">
-                    <component :is="item"></component>
+                <b-tab-item :key="index" :label="item.name">
+                    <component :is="item.component"></component>
                 </b-tab-item>
             </template>
         </b-tabs>
@@ -31,12 +31,20 @@
         },
         data() {
             return {
-                activeTab: 0,
+                activeTab: 1,
                 navItems: [
-                    'Tournament',
-                    'Brackets',
-                    'Teams',
-                    'Results',
+                    {
+                        name: 'Brackets',
+                        component: 'Tournament',
+                    },
+                    {
+                        name: 'Teams',
+                        component: 'Teams',
+                    },
+                    {
+                        name: 'Results',
+                        component: 'Results',
+                    },
                 ]
             }
         }

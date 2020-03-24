@@ -60,11 +60,13 @@
                         {{ Math.round((props.row.sold / props.row.available) * 100) }}%
                     </span>
                 </b-table-column>
+                <b-table-column  />
             </template>
 
             <template slot="detail" slot-scope="props">
                 <tr v-for="item in props.row.items" :key="item.name" class="table--detail__child">
                     <td></td>
+
                     <td v-show="columnsVisible['name'].display" >{{ item.name }}</td>
                     <td v-show="columnsVisible['sold'].display">{{ item.sold }}</td>
                     <td v-show="columnsVisible['available'].display">{{ item.available }}</td>
@@ -78,124 +80,138 @@
                             {{ Math.round((item.sold / item.available) * 100) }}%
                         </span>
                     </td>
+                    <td align="right">
+                        <div class="buttons is-right">
+                            <b-button @click="isComponentModalActive = true" size="is-small" label="" type="is-grey-light" icon-right="settings"></b-button>
+                            <b-button size="is-small" label="" outlined type="is-danger" icon-right="delete"></b-button>
+                        </div>
+                    </td>
                 </tr>
             </template>
         </b-table>
 
+        
+        <b-modal :active.sync="isComponentModalActive"
+            has-modal-card>
+            <ModalForm />
+        </b-modal>
     </section>
 </template>
 
 <script>
-    export default {
-        name: 'DetailTable',
-        data() {
-            return {
-                data: [
-                    {
-                        name: 'Board Games',
-                        sold: 131,
-                        available: 301,
-                        items: [
-                            {
-                                name: 'Monopoly',
-                                sold: 57,
-                                available: 100
-                            },
-                            {
-                                name: 'Scrabble',
-                                sold: 23,
-                                available: 84
-                            },
-                            {
-                                name: 'Chess',
-                                sold: 37,
-                                available: 61
-                            },
-                            {
-                                name: 'Battleships',
-                                sold: 14,
-                                available: 56
-                            }
-                        ]
-                    },
-                    {
-                        name: 'Jigsaws & Puzzles',
-                        sold: 88,
-                        available: 167,
-                        items: [
-                            {
-                                name: 'World Map',
-                                sold: 31,
-                                available: 38
-                            },
-                            {
-                                name: 'London',
-                                sold: 23,
-                                available: 29
-                            },
-                            {
-                                name: 'Sharks',
-                                sold: 20,
-                                available: 44
-                            },
-                            {
-                                name: 'Disney',
-                                sold: 14,
-                                available: 56
-                            }
-                        ]
-                    },
-                    {
-                        name: 'Books',
-                        sold: 434,
-                        available: 721,
-                        items: [
-                            {
-                                name: 'Hamlet',
-                                sold: 101,
-                                available: 187
-                            },
-                            {
-                                name: 'The Lord Of The Rings',
-                                sold: 85,
-                                available: 156
-                            },
-                            {
-                                name: 'To Kill a Mockingbird',
-                                sold: 78,
-                                available: 131
-                            },
-                            {
-                                name: 'Catch-22',
-                                sold: 73,
-                                available: 98
-                            },
-                            {
-                                name: 'Frankenstein',
-                                sold: 51,
-                                available: 81
-                            },
-                            {
-                                name: 'Alice\'s Adventures In Wonderland',
-                                sold: 46,
-                                available: 68
-                            }
-                        ]
-                    }
-                ],
-                columnsVisible: {
-                    name: { title: 'Name', display: true },
-                    sold: { title: 'Stock Sold', display: true },
-                    available: { title: 'Stock Available', display: true },
-                    cleared: { title: 'Stock Cleared', display: true },
+import ModalForm from "./ModalForm";
+export default {
+    name: 'DetailTable',
+    components: {
+        ModalForm
+    },
+    data() {
+        return {
+            isComponentModalActive: false,
+            data: [
+                {
+                    name: 'Board Games',
+                    sold: 131,
+                    available: 301,
+                    items: [
+                        {
+                            name: 'Monopoly',
+                            sold: 57,
+                            available: 100
+                        },
+                        {
+                            name: 'Scrabble',
+                            sold: 23,
+                            available: 84
+                        },
+                        {
+                            name: 'Chess',
+                            sold: 37,
+                            available: 61
+                        },
+                        {
+                            name: 'Battleships',
+                            sold: 14,
+                            available: 56
+                        }
+                    ]
                 },
-                showDetailIcon: true
-            }
-        },
-        methods: {
-            toggle(row) {
-                this.$refs.table.toggleDetails(row)
-            }
+                {
+                    name: 'Jigsaws & Puzzles',
+                    sold: 88,
+                    available: 167,
+                    items: [
+                        {
+                            name: 'World Map',
+                            sold: 31,
+                            available: 38
+                        },
+                        {
+                            name: 'London',
+                            sold: 23,
+                            available: 29
+                        },
+                        {
+                            name: 'Sharks',
+                            sold: 20,
+                            available: 44
+                        },
+                        {
+                            name: 'Disney',
+                            sold: 14,
+                            available: 56
+                        }
+                    ]
+                },
+                {
+                    name: 'Books',
+                    sold: 434,
+                    available: 721,
+                    items: [
+                        {
+                            name: 'Hamlet',
+                            sold: 101,
+                            available: 187
+                        },
+                        {
+                            name: 'The Lord Of The Rings',
+                            sold: 85,
+                            available: 156
+                        },
+                        {
+                            name: 'To Kill a Mockingbird',
+                            sold: 78,
+                            available: 131
+                        },
+                        {
+                            name: 'Catch-22',
+                            sold: 73,
+                            available: 98
+                        },
+                        {
+                            name: 'Frankenstein',
+                            sold: 51,
+                            available: 81
+                        },
+                        {
+                            name: 'Alice\'s Adventures In Wonderland',
+                            sold: 46,
+                            available: 68
+                        }
+                    ]
+                }
+            ],
+            columnsVisible: {
+                name: { title: 'Team Name', display: true },
+                sold: { title: 'Rounds Won', display: true },
+                available: { title: 'Rounds Lost', display: true },
+                cleared: { title: 'Win Percentage', display: true },
+            },
+            showDetailIcon: true
         }
+    },
+    methods: {
+
     }
+}
 </script>

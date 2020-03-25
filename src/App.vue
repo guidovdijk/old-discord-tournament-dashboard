@@ -5,12 +5,8 @@
 
       <div class="container is-fluid">
         <div class="columns has-sidebar-neighbour">
-          <div class="column">
-            <div class="columns">
-              <div class="column is-10-desktop is-12-tablet">
-                <router-view/>
-              </div>
-            </div>
+          <div class="column is-10-desktop is-12-tablet">
+            <router-view/>
           </div>
         </div>
       </div>

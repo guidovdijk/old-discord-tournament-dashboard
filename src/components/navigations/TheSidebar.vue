@@ -2,7 +2,7 @@
   <div class="sidebar-narrow-width is-fixed has-background-dark">
     <b-menu>
         <b-menu-list>
-            <b-menu-item label="Dashboard"></b-menu-item>
+            <b-menu-item label="Dashboard" tag="router-link" :to="{ path: '/'}"  exact></b-menu-item>
             <b-menu-item>
                 <template slot="label" slot-scope="props">
                     Teams
@@ -10,17 +10,15 @@
                 <b-menu-item>
                     <template slot="label" slot-scope="props">
                         Devices
-                        <b-dropdown aria-role="list" class="is-pulled-right" position="is-bottom-left">
-                            <b-dropdown-item aria-role="listitem">Action</b-dropdown-item>
-                            <b-dropdown-item aria-role="listitem">Another action</b-dropdown-item>
-                            <b-dropdown-item aria-role="listitem">Something else</b-dropdown-item>
-                        </b-dropdown>
                     </template>
                 </b-menu-item>
                 <b-menu-item label="Payments" disabled></b-menu-item>
             </b-menu-item>
-            <b-menu-item label="Tournament" :active="isActive">
-                <b-menu-item tag="router-link" :to="{ path: '/' }" label="Overview"></b-menu-item>
+            <b-menu-item label="Tournament" :active="path  == '/tournaments'" expanded>
+                <template slot="label" slot-scope="props">
+                    Tournament
+                </template>
+                <b-menu-item tag="router-link" :to="{ path: '/tournaments' }" label="Overview"></b-menu-item>
                 <b-menu-item label="Addresses"></b-menu-item>
             </b-menu-item>
         </b-menu-list>
@@ -45,10 +43,15 @@
 <script>
     export default {
         name: 'NavigationSidebar',
-        data() {
-            return {
-                isActive: true
-            }
-        }
+        data() {  
+            return {  
+                path: this.$route && this.$route.path  
+            };  
+        },  
+        watch: {  
+            $route(route) {  
+                this.path = route.path;  
+            }  
+        }  
     }
 </script>

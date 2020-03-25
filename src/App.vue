@@ -2,7 +2,18 @@
     <div>
       <NavigationBar msg="Welcome to Your Vue.js App"/>
       <NavigationSidebar />
-      <router-view/>
+
+      <div class="container is-fluid">
+        <div class="columns has-sidebar-neighbour">
+          <div class="column">
+            <div class="columns">
+              <div class="column is-10-desktop is-12-tablet">
+                <router-view/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 </template>
 <script>

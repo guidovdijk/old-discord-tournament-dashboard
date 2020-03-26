@@ -1,12 +1,16 @@
 <template>
-<div class="tile is-ancestor">
-  <div class="tile is-parent">
+<div class="columns is-multiline">
+  <div class="column is-4">
     <charts v-if="this.loaded" :data="this.data" :chart="'line-chart'" :title="'Discord user growth'" />
   </div>
-  <div class="tile is-parent">
-    <div class="tile is-child box">
-      <p class="title is-5">Three</p>
-    </div>
+  <div class="column is-4">
+    <charts v-if="this.loaded" :data="this.data2" :chart="'bar-chart'" :title="'Gender distribution'" />
+  </div>
+  <div class="column is-4">
+    <charts v-if="this.loaded" :data="this.data" :chart="'line-chart'" :title="'Discord user growth'" />
+  </div>
+  <div class="column is-4">
+    <charts v-if="this.loaded" :data="this.data" :chart="'bar-chart'" :title="'Discord user growth'" />
   </div>
 </div>
 </template>
@@ -26,11 +30,20 @@
           labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
           datasets: [
             {
-              label: 'GitHub Commits',
+              label: 'Discord users per month',
               data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
             },
           ]
-        }
+        },
+        data2: {
+          labels: ['Man', 'Woman', 'Rather not say'],
+          datasets: [
+            {
+              label: 'Gender distribution',
+              data: [20, 12, 5]
+            },
+          ]
+        },
       }
     },
     mounted(){

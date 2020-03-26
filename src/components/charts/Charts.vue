@@ -1,28 +1,35 @@
 <template>
     <div class="tile is-child box">
         <p class="title is-5">{{this.title}}</p>
-        <component :is="chart" :data="data" :options="options.chart" @gradient="createGradient"/>
+        <component :is="chart" :data="data" :options="options.chart" @gradient="createGradient" />
     </div>
 </template>
 
 <script>
 import LineChart from './LineChart';
+import BarChart from './BarChart';
 import Chart from 'chart.js';
 
 Chart.defaults.global.defaultColor = "white";
 Chart.defaults.global.defaultFontColor = "white";
 Chart.defaults.global.defaultFontSize = 11;
 Chart.defaults.global.tooltips.enabled = true;
+Chart.defaults.global.elements.rectangle.borderWidth = 2;
+Chart.defaults.global.elements.rectangle.borderColor = 'rgb(58, 184, 156, 1)';
+Chart.defaults.global.elements.rectangle.backgroundColor = 'rgb(58, 184, 156, 1)';
 Chart.defaults.global.elements.line.borderColor = 'rgb(58, 184, 156, 1)';
 Chart.defaults.global.elements.line.tension = 0.5;
 Chart.defaults.global.elements.line.pointBorderWidth = 5;
 Chart.defaults.global.elements.line.borderWidth = 2;
+Chart.defaults.global.tooltips.backgroundColor = 'rgb(30, 34, 51)';
+Chart.defaults.global.defaultFontSize = 12;
 
 export default {
     name: 'Charts',
     props: ['data', 'chart', 'title'],
     components: {
-        LineChart
+        LineChart,
+        BarChart
     },
     methods: {
         createGradient(gradient){

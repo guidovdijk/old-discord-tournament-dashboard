@@ -1,7 +1,7 @@
 <template>
 <div class="tile is-ancestor">
   <div class="tile is-parent">
-    <charts v-if="this.loaded" :data="this.data" :chart="'line-chart'"/>
+    <charts v-if="this.loaded" :data="this.data" :chart="'line-chart'" :title="'Discord user growth'" />
   </div>
   <div class="tile is-parent">
     <div class="tile is-child box">

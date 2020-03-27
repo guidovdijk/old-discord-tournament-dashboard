@@ -1,13 +1,12 @@
-.table {
-    &--detail {
-        &__child {
-            background-color: $table-head-background-color !important;
-            td {
-                border-bottom-color: $body-background-color;
-                &:nth-of-type(2){
-                    padding-left: 2rem;
-                }
-            }
+.b-table {
+    &.has-border-spacing {
+        table {
+            border-spacing: 0 20px;
+            background: transparent;
+        }
+
+        td {
+            border: none;
         }
     }
 }

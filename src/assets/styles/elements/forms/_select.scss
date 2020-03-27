@@ -1,12 +1,13 @@
 .select {
     select {
-        width: 200px;
         color: $text;
+
         option {
             background-color: $dark;
             color: $text;
         }
     }
+
     &.is-empty select {
         color: rgba($text, 0.7);
     }

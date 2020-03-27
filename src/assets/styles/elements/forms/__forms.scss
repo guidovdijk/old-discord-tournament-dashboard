@@ -1,8 +1,9 @@
 @import 'checkbox';
 @import 'select';
+@import 'slider';
 
 .field {
-    &:not(:last-child) {
-      margin-bottom: 1.2rem; 
-    }
+  &:not(:last-child) {
+    margin-bottom: 1.2rem;
+  }
 }

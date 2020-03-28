@@ -88,7 +88,7 @@
     </b-step-item>
 
     <template slot="navigation" slot-scope="{previous, next}">
-      <div class="steps-navigation">
+      <div class="steps-navigation box has-background-transparent">
         <b-button
           type="is-grey-light"
           icon-left="arrow-left"

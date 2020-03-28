@@ -1,22 +1,30 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Dashboard from '../views/Dashboard.vue'
+import Create from '../views/tournament/Create.vue';
+import Overview from '../views/tournament/Overview.vue';
+import Tournament from '../views/Tournament.vue';
 
 Vue.use(VueRouter)
 
-const routes = [
-  // {
-  //   path: '/',
-  //   name: 'Dashboard',
-  //   component: Dashboard
-  // },
-  {
+const routes = [{
     path: '/',
+    name: 'Dashboard',
+    component: Dashboard
+  },
+  {
+    path: '/tournaments',
     name: 'Tournaments',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import( /* webpackChunkName: "Tournaments" */ '../views/Tournaments.vue')
+    component: Tournament,
+    children: [{
+        path: 'create',
+        component: Create,
+      },
+      {
+        path: 'overview',
+        component: Overview,
+      }
+    ]
   }
 ]
 

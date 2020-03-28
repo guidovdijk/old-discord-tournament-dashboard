@@ -1,0 +1,10 @@
+.b-steps {
+    .steps .step-items .step-item.is-active .step-marker {
+        background-color: $primary;
+    }
+
+    .steps-navigation {
+        display: flex;
+        justify-content: flex-end;
+    }
+}

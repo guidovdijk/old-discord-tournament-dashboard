@@ -1,0 +1,22 @@
+.datepicker {
+
+    .datepicker-header,
+    .datepicker-footer {
+        border-color: $text;
+    }
+
+    .datepicker-header {
+        .pagination a {
+            background-color: $primary;
+            border: none;
+
+            .icon {
+                color: $white !important;
+            }
+        }
+    }
+
+    .dropdown-item .field {
+        color: $text;
+    }
+}

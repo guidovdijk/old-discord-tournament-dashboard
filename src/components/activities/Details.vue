@@ -25,10 +25,18 @@
               </b-select>
             </b-field>
             <b-field label="Tournament sign-up end date">
-              <b-datetimepicker placeholder="22/04/2020 18:00:00" icon="calendar-today" editable></b-datetimepicker>
+              <b-datetimepicker
+                placeholder="22/04/2020 18:00:00"
+                icon="calendar-today"
+                :focusable="false"
+              ></b-datetimepicker>
             </b-field>
             <b-field label="Tournament start date">
-              <b-datetimepicker placeholder="22/04/2020 18:00:00" icon="calendar-today" editable></b-datetimepicker>
+              <b-datetimepicker
+                placeholder="22/04/2020 18:00:00"
+                icon="calendar-today"
+                :focusable="false"
+              ></b-datetimepicker>
             </b-field>
             <b-field label="Number of teams">
               <b-slider

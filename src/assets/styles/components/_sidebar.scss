@@ -10,17 +10,39 @@ $sidebar-width: 250px;
         max-width: $sidebar-width;
         width: 100%;
         height: 100%;
-        padding: 1rem 2.5rem;
 
         .menu-list {
             a {
-                display: inline-block;
+                padding: 1rem 2.5rem;
                 line-height: initial;
+                position: relative;
+
+                &.is-active {
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        width: 3px;
+                        left: 0;
+                        height: 100%;
+                        top: 0;
+                        background: $primary;
+                    }
+                }
             }
 
             li ul {
                 line-height: $menu-list-line-height-small;
                 margin-top: 0;
+                border: none;
+
+                a.is-active,
+                a:hover {
+                    background: transparent;
+
+                    &::before {
+                        content: none;
+                    }
+                }
             }
         }
     }

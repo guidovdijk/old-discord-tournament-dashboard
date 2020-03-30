@@ -111,6 +111,8 @@
   </b-steps>
 </template>
 <script>
+import { db } from "@/main";
+
 export default {
   name: "Create",
   data() {
@@ -132,6 +134,20 @@ export default {
       }
     };
   },
-  computed: {}
+  mounted() {
+    this.test();
+  },
+  methods: {
+    test() {
+      const teamsCollection = db.collection("teams");
+      teamsCollection.get().then(snapshot => {
+        snapshot.forEach(doc => {
+          const data = doc.data();
+
+          console.log(data);
+        });
+      });
+    }
+  }
 };
 </script>

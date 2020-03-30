@@ -5,24 +5,21 @@
     size="is-small"
     icon-prev="chevron-left"
     icon-next="chevron-right"
+    v-model="activeStep"
   >
     <b-step-item label="General Information">
       <div class="box">
         <b-field label="Tournament name">
-          <b-input placeholder="Tournament name.."></b-input>
+          <b-input v-model="tournament[0].name" placeholder="Tournament name.."></b-input>
         </b-field>
         <b-field label="Tournament Type">
-          <b-select :placeholder="this.tournmamentType[0]">
-            <option
-              v-for="(data, index) in this.tournmamentType"
-              :value="data"
-              :key="index"
-            >{{ data }}</option>
+          <b-select v-model="tournament[0].selectedIndex" :placeholder="tournamentList[0]">
+            <option v-for="(data, index) in tournamentList" :value="index" :key="index">{{ data }}</option>
           </b-select>
         </b-field>
         <b-field label="Number of teams">
           <b-slider
-            v-model="numberOfTeams.value"
+            v-model="tournament[0].numberOfTeams"
             :min="numberOfTeams.min"
             :max="numberOfTeams.max"
             :step="1"
@@ -31,9 +28,9 @@
         </b-field>
         <b-field label="Number of players per team">
           <b-slider
-            v-model="numberOfPlayer.value"
-            :min="numberOfPlayer.min"
-            :max="numberOfPlayer.max"
+            v-model="tournament[0].numberOfPlayers"
+            :min="numberOfPlayers.min"
+            :max="numberOfPlayers.max"
             :step="1"
             ticks
           ></b-slider>
@@ -47,6 +44,7 @@
           <b-datetimepicker
             placeholder="Date until people can sign up..."
             icon="calendar-today"
+            v-model="tournament[1].signupDate"
             editable
           ></b-datetimepicker>
         </b-field>
@@ -54,6 +52,7 @@
           <b-datetimepicker
             placeholder="Tournament starting date..."
             icon="calendar-today"
+            v-model="tournament[1].startDate"
             editable
           ></b-datetimepicker>
         </b-field>
@@ -65,23 +64,23 @@
         <ul class>
           <li>
             Tournament Name:
-            <strong></strong>
+            <strong>{{tournament[0].name}}</strong>
           </li>
           <li>
-            Number of teams:
-            <strong></strong>
+            Number of teams (min, max):
+            <strong>{{tournament[0].numberOfTeams}}</strong>
           </li>
           <li>
-            Number of players per team:
-            <strong></strong>
+            Number of players per team (min, max):
+            <strong>{{tournament[0].numberOfPlayers}}</strong>
           </li>
           <li>
             Sign-up end date:
-            <strong></strong>
+            <strong>{{tournament[1].signupDate}}</strong>
           </li>
           <li>
             Tournament starting date:
-            <strong></strong>
+            <strong>{{tournament[1].startDate}}</strong>
           </li>
         </ul>
       </div>
@@ -100,7 +99,7 @@
             type="is-primary"
             icon-right="arrow-right"
             :disabled="false"
-            @click.prevent="next.action"
+            @click.prevent="validate(next)"
           >Next</b-button>
         </template>
         <template v-else>
@@ -108,6 +107,7 @@
         </template>
       </div>
     </template>
+    <p class="has-text-danger" v-show="showErrorMessage">Please fill in all the inputs</p>
   </b-steps>
 </template>
 <script>
@@ -117,25 +117,37 @@ export default {
   name: "Create",
   data() {
     return {
-      tournmamentType: [
+      activeStep: 0,
+      showErrorMessage: false,
+      tournament: [
+        {
+          name: null,
+          selectedIndex: 0,
+          numberOfTeams: [1, 18],
+          numberOfPlayers: [1, 4]
+        },
+        {
+          signupDate: null,
+          startDate: null
+        }
+      ],
+      tournamentList: [
         "Single Elimination",
         "Double Elimination",
         "Round Robin"
       ],
       numberOfTeams: {
-        value: [1, 18],
         max: 30,
         min: 3
       },
-      numberOfPlayer: {
-        value: [1, 4],
+      numberOfPlayers: {
         max: 10,
         min: 1
       }
     };
   },
   mounted() {
-    this.test();
+    // this.test();
   },
   methods: {
     test() {
@@ -147,6 +159,18 @@ export default {
           console.log(data);
         });
       });
+    },
+    validate(next) {
+      const inputIsNull = Object.values(this.tournament[this.activeStep]).some(
+        o => o === null
+      );
+
+      if (inputIsNull) {
+        this.showErrorMessage = true;
+      } else {
+        this.showErrorMessage = false;
+        next.action();
+      }
     }
   }
 };

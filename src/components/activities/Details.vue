@@ -71,6 +71,7 @@
 <script>
 export default {
   name: "Details",
+  // props: ["data", "teams"],
   data() {
     return {
       maxTeamSize: 5,
@@ -161,9 +162,9 @@ export default {
   },
   methods: {
     getTeamSize() {
-      this.data.forEach(data => {
-        data.team_size = `${data.team_size}/${this.maxTeamSize}`;
-      });
+      // this.data.forEach(data => {
+      //   data.team_size = `${data.team_size}/${this.maxTeamSize}`;
+      // });
     }
   }
 };

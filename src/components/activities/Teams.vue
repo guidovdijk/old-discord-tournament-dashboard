@@ -1,6 +1,6 @@
 <template>
   <div>
-    <detail-table />
+    <detail-table :teams="teams" />
   </div>
 </template>
 

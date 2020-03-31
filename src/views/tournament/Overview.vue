@@ -32,7 +32,7 @@ export default {
   data() {
     return {
       loading: true,
-      activeTab: 2,
+      activeTab: 1,
       data: null,
       teams: [],
       navItems: [

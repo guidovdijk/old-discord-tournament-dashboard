@@ -49,6 +49,24 @@ export default {
           this.error = error.message;
           console.log(error);
         });
+    },
+    signup() {
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(
+          this.username + "@currycrewtournamentdashboard.com",
+          this.password
+        )
+        .then(() => {
+          return firebase.auth().currentUser;
+        })
+        .then(user => {
+          return user.updateProfile({ displayName: this.username });
+        })
+        .catch(error => {
+          this.error = error.message;
+          console.log(error);
+        });
     }
   }
 };

@@ -136,7 +136,6 @@
       }
     },
     mounted() {
-      this.getTeamSize();
       this.createParticipantsList();
     },
     methods: {
@@ -153,12 +152,6 @@
           });
         });
         this.participants = allParticipants;
-      },
-      getTeamSize() {
-        // console.log(this.teams);
-        // this.data.forEach(data => {
-        //   data.team_size = `${data.team_size}/${this.maxTeamSize}`;
-        // });
       }
     }
   };

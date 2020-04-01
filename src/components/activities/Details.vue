@@ -109,38 +109,6 @@
           "Round Robin"
         ],
         participants: [],
-        // data: [
-        //   {
-        //     league_name: "Jesse",
-        //     discord_name: "Simmons",
-        //     team_name: "Team 1",
-        //     team_size: 4
-        //   },
-        //   {
-        //     league_name: "John",
-        //     discord_name: "Jacobs",
-        //     team_name: "Team 2",
-        //     team_size: 5
-        //   },
-        //   {
-        //     league_name: "Tina",
-        //     discord_name: "Gilbert",
-        //     team_name: "Team 3",
-        //     team_size: 2
-        //   },
-        //   {
-        //     league_name: "Clarence",
-        //     discord_name: "Flores",
-        //     team_name: "Team 4",
-        //     team_size: 1
-        //   },
-        //   {
-        //     league_name: "Anne",
-        //     discord_name: "Lee",
-        //     team_name: "Team 5",
-        //     team_size: 2
-        //   }
-        // ],
         columns: [
           {
             field: "name",

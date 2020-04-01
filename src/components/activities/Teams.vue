@@ -1,5 +1,29 @@
 <template>
   <section>
+    <form
+      method="post"
+      @submit.prevent="createTeam"
+      v-if="!reachedTeamLimit"
+      class="content"
+    >
+      <b-field
+        label="team name"
+        :type="{ 'is-danger': error }"
+        :message="[{ 'Team name not filled in or it already exists': error }]"
+      >
+        <b-input v-model="teamName" placeholder="Team name..."></b-input>
+      </b-field>
+      <b-field>
+        <p class="control">
+          <b-button
+            tag="input"
+            type="is-primary"
+            native-type="submit"
+            value="create team"
+          />
+        </p>
+      </b-field>
+    </form>
     <b-table
       :data="teams"
       ref="table"
@@ -42,14 +66,20 @@
             }}%</span
           >
         </b-table-column>
+        <b-table-column label="Players">
+          {{ props.row.players.length }}/{{ data.numberOfPlayers[1] }}
+        </b-table-column>
         <b-table-column>
-          <b-button
-            v-if="!isInTeam(props) || teamIsFull(props)"
-            label="Join Team"
-            type="is-primary"
-            size="is-small"
-            @click="updateTeams(props)"
-          ></b-button>
+          <template v-if="!isInTeam(props)">
+            <b-button
+              v-if="teamIsFull(props.row.players.length)"
+              label="Join Team"
+              type="is-primary"
+              size="is-small"
+              @click="updateTeams(props)"
+            ></b-button>
+            <p v-else>Team is full</p>
+          </template>
           <p v-else>You are in this team</p>
         </b-table-column>
       </template>
@@ -104,6 +134,8 @@
       return {
         placeholderName: "greater_virginia 8",
         ref: null,
+        teamName: "",
+        error: false,
         modal: {
           title: String,
           detail: "Change player with another available player",
@@ -131,19 +163,24 @@
     components: {
       ModalForm
     },
+    computed: {
+      reachedTeamLimit() {
+        return this.teams.length >= this.data.numberOfTeams[1];
+      }
+    },
     mounted() {
       this.ref = db
         .collection("tournament")
         .doc(this.$route.params.id)
         .collection("teams");
+      console.log(this.teams.length >= this.data.numberOfTeams[1]);
     },
     methods: {
       isInTeam(props) {
-        // console.log(props.row.players.includes(this.placeholderName));
         return props.row.players.includes(this.placeholderName);
       },
-      teamIsFull(props) {
-        // console.log(props);
+      teamIsFull(numberOfPlayers) {
+        return numberOfPlayers <= this.data.numberOfPlayers[1];
       },
       updateTeams(props) {
         this.removeplayerFromTeam(props);
@@ -184,6 +221,34 @@
         this.isComponentModalActive = true;
         this.modal.title = "Selected player: " + item.name;
         this.modal.active.player = item;
+      },
+      async createTeam() {
+        if (!this.teamName) {
+          this.error = true;
+          return;
+        }
+        const isAvailable = await this.checkNameAvailability();
+
+        if (!isAvailable) {
+          this.error = true;
+          return;
+        }
+
+        this.ref.doc().set({
+          teamName: this.teamName,
+          won: 0,
+          lost: 0,
+          players: []
+        });
+      },
+      checkNameAvailability() {
+        return this.ref
+          .where("teamName", "==", this.teamName)
+          .limit(1)
+          .get()
+          .then(snapshot => {
+            return snapshot.empty;
+          });
       }
     }
   };

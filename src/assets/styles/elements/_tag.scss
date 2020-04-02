@@ -1,0 +1,12 @@
+.tag {
+    &.is-circle {
+        height: 1em;
+        width: 1em;
+        padding: 0;
+    }
+
+    &.is-center {
+        display: flex;
+        justify-content: center;
+    }
+}

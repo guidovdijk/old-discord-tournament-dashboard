@@ -1,12 +1,40 @@
 .b-table {
     &.has-border-spacing {
         table {
-            border-spacing: 0 20px;
             background: transparent;
+            border-spacing: 0 1.2rem;
+        }
+
+        tbody tr {
+            background: $grey-dark;
         }
 
         td {
             border: none;
+            padding: 2rem 0.75rem;
+
+            &.is-v-centered {
+                vertical-align: middle;
+            }
+        }
+    }
+
+    &.no-header-background {
+        thead {
+            background: transparent;
+
+            th {
+                border: none;
+                color: $text;
+            }
+        }
+    }
+
+    table {
+        &.is-hoverable {
+            tr:hover {
+                color: #c4c9e4;
+            }
         }
     }
 }

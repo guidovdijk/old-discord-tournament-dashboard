@@ -7,7 +7,7 @@ $grey-light: #3b3c52;
 $white: #ffffff;
 
 $colors: ("black": ($black, $black),
-    "dark": ($dark, $dark),
+    "dark": ($dark, $text),
     "primary": ($primary, $white),
     "grey-dark": ($grey-dark, $white),
     "grey-light": ($grey-light, #d4d6dc),
@@ -56,6 +56,7 @@ $table-head-background-color: $black;
 $border: #696c7d;
 $table-cell-border: 1px solid $border;
 $table-head-cell-border-width: 0 0 1px;
+$table-row-hover-background-color: $grey-light;
 
 $modal-card-head-background-color: $dark;
 $modal-card-body-background-color: $grey-light;

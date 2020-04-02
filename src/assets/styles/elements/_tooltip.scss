@@ -1,0 +1,11 @@
+.b-tooltip {
+    &.is-center {
+        display: flex;
+        justify-content: center;
+    }
+
+    &.has-tag {
+        width: 1em;
+        margin: auto;
+    }
+}

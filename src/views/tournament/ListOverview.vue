@@ -36,9 +36,10 @@
           <b-button
             type="is-primary"
             size="is-small"
-            :disabled="!props.row.status"
+            v-if="props.row.status"
             @click="goToDetailPage(props.row.id)"
-          >play along</b-button>
+          >Play Along</b-button>
+          <b-button type="is-black" size="is-small" v-else :disabled="true">Tournament Closed</b-button>
         </b-table-column>
       </template>
     </b-table>

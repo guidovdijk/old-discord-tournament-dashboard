@@ -1,3 +1,14 @@
 .tabs {
     margin-top: -$gap * 2;
 }
+
+.activities .b-tabs .has-min-height {
+    min-height: 500px;
+}
+
+.tournament {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    text-align: center;
+}
